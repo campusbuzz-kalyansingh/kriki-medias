@@ -1,0 +1,236 @@
+/* ─────────────────────────────────────────
+   KRIKI Media — Global Styles & CSS Tokens
+   ───────────────────────────────────────── */
+
+/* ── Google Fonts already loaded via index.html ── */
+
+/* ── CSS Design Tokens ── */
+:root {
+  /* Backgrounds */
+  --bg:      #02000a;
+  --bg2:     #06040f;
+  --bg3:     #0a0818;
+
+  /* Neon Colors */
+  --cyan:    #00fff7;
+  --cyan-dim: rgba(0, 255, 247, 0.12);
+  --magenta: #ff00ea;
+  --violet:  #7000ff;
+
+  /* Text */
+  --white:   #f4f0ff;
+  --muted:   rgba(244, 240, 255, 0.40);
+  --dim:     rgba(244, 240, 255, 0.08);
+
+  /* Borders */
+  --border-cyan:    rgba(0, 255, 247, 0.12);
+  --border-cyan-md: rgba(0, 255, 247, 0.22);
+  --border-dim:     rgba(255, 255, 255, 0.08);
+
+  /* Glows */
+  --glow-cyan:    0 0 20px rgba(0, 255, 247, 0.35);
+  --glow-cyan-lg: 0 0 40px rgba(0, 255, 247, 0.45), 0 0 80px rgba(0, 255, 247, 0.15);
+  --glow-magenta: 0 0 20px rgba(255, 0, 234, 0.3);
+
+  /* Typography */
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  /* Spacing */
+  --section-padding: 96px 5.5%;
+  --nav-height: 62px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  /* Transitions */
+  --transition: all 0.28s ease;
+  --transition-slow: all 0.5s ease;
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  cursor: none;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 247, 0.3);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
+
+/* ── Selection ── */
+::selection {
+  background: rgba(0, 255, 247, 0.2);
+  color: var(--cyan);
+}
+
+/* ── Typography Utilities ── */
+.font-display { font-family: var(--font-display); }
+
+.neon-text {
+  background: linear-gradient(90deg, var(--cyan) 0%, var(--magenta) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 18px rgba(0, 255, 247, 0.5));
+}
+
+/* ── Scanlines Effect ── */
+.scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 247, 0.012) 2px,
+    rgba(0, 255, 247, 0.012) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Section Base ── */
+.section {
+  padding: var(--section-padding);
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.section--dark { background: var(--bg2); }
+
+/* ── Section Tag ── */
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 14px;
+  text-shadow: 0 0 8px rgba(0, 255, 247, 0.45);
+}
+.section-tag::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--cyan);
+  box-shadow: 0 0 6px var(--cyan);
+}
+
+/* ── Section Heading ── */
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 50px);
+  font-weight: 900;
+  letter-spacing: -2px;
+  color: #fff;
+  line-height: 1.05;
+}
+
+/* ── Neon Buttons ── */
+.btn-neon {
+  position: relative;
+  background: transparent;
+  border: 1px solid var(--cyan);
+  border-radius: var(--radius-md);
+  padding: 15px 34px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cyan);
+  cursor: pointer;
+  font-family: var(--font-body);
+  letter-spacing: 0.4px;
+  transition: var(--transition);
+  text-shadow: 0 0 10px rgba(0, 255, 247, 0.55);
+  box-shadow: 0 0 18px rgba(0, 255, 247, 0.1), inset 0 0 18px rgba(0, 255, 247, 0.03);
+  overflow: hidden;
+}
+.btn-neon:hover {
+  box-shadow: var(--glow-cyan-lg), inset 0 0 40px rgba(0, 255, 247, 0.09);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 15px 34px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  cursor: pointer;
+  font-family: var(--font-body);
+  letter-spacing: 0.3px;
+  transition: var(--transition);
+}
+.btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-2px);
+}
+
+/* ── Keyframe Animations ── */
+@keyframes float1 {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-18px); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(14px); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes scanline {
+  0%   { top: 0;    opacity: 0.9; }
+  90%  { top: 100%; opacity: 0.4; }
+  100% { top: 100%; opacity: 0; }
+}
+@keyframes spinRing {
+  to { transform: rotate(360deg); }
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 1; }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px var(--cyan); }
+  50%       { opacity: 0.3; box-shadow: none; }
+}
+@keyframes portScan {
+  0%   { top: 0; }
+  100% { top: 100%; }
+}

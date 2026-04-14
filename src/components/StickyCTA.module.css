@@ -1,0 +1,36 @@
+.cta {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 400;
+  background: transparent;
+  border: 1px solid var(--cyan);
+  border-radius: var(--radius-md);
+  padding: 12px 22px;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--cyan);
+  cursor: pointer;
+  font-family: var(--font-body);
+  letter-spacing: 0.4px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: all 0.4s ease;
+  box-shadow:
+    0 0 18px rgba(0, 255, 247, 0.18),
+    inset 0 0 18px rgba(0, 255, 247, 0.04);
+  text-shadow: 0 0 8px rgba(0, 255, 247, 0.45);
+}
+
+.cta.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cta:hover {
+  background: rgba(0, 255, 247, 0.07);
+  box-shadow:
+    0 0 40px rgba(0, 255, 247, 0.42),
+    inset 0 0 40px rgba(0, 255, 247, 0.08);
+  transform: translateY(-2px);
+}

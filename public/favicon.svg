@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00fff7"/>
+      <stop offset="1" stop-color="#7000ff"/>
+    </linearGradient>
+  </defs>
+  <polygon points="40,4 73,22 73,58 40,76 7,58 7,22"
+    fill="none" stroke="url(#g)" stroke-width="2"/>
+  <text x="40" y="52" text-anchor="middle"
+    font-family="sans-serif" font-weight="900" font-size="28"
+    fill="url(#g)">K</text>
+</svg>
